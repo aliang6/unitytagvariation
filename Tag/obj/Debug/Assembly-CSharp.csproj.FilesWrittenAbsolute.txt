@@ -1,0 +1,17 @@
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEditor.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.Analytics.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.PlaymodeTestsRunner.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.HoloLens.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/UnityEngine.VR.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Mono.Cecil.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Unity.DataContract.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/Andy/Documents/GitHub/unitytagvariation/Tag/Temp/bin/Debug/Mono.Cecil.Mdb.dll

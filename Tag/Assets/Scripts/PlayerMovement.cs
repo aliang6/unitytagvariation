@@ -22,5 +22,9 @@ public class PlayerMovement : MonoBehaviour {
 		float moveVertical = Input.GetAxis ("Vertical");
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rb2d.AddForce (movement);
+
+		
+	
 	}
+
 }
