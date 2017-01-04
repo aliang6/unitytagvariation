@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "Player" && immune == false) {
 			tagCount++;
+			rb2d.AddForce (other.relativeVelocity * 10);
 		}
 		tagNumber.text = tagCount.ToString ();
 	} 
