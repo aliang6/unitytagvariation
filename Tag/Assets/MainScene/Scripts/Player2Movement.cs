@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2Movement : MonoBehaviour {
 
 	public float speed;
+	public Rigidbody2D rb2d2;
+	public UnityEngine.UI.Text speedText;
+
+	private bool collide;
 	private int tagCount;
 	private Rigidbody2D rb2d;
 
@@ -12,7 +17,8 @@ public class Player2Movement : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
 		tagCount = 0;
-
+		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
+		collide = false;
 	}
 
 	// Update is called once per frame
@@ -24,6 +30,9 @@ public class Player2Movement : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.Q)) {
 			rb2d.AddForce (movement * 2, ForceMode2D.Impulse);
+			speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
 		}
+
+		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
 	}	
 }
