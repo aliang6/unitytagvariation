@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Player2Movement : MonoBehaviour {
 
-	private float QCOOLDOWN = 10.0f;
-	private float ECOOLDOWN = 10.0f;
+	private float QCOOLDOWN = 2.0f;
+	private float ECOOLDOWN = 2.0f;
 
 	public float speed;
 	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText;
+	public UnityEngine.UI.Text speedText, qCooldown, eCooldown, tagNumber;
 
 	private bool collide;
 	private int tagCount;
@@ -21,7 +21,10 @@ public class Player2Movement : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
 		tagCount = 0;
-		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
+		tagNumber.text = tagCount.ToString ();
+		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		qCooldown.text = qCooldownTimer.ToString ();
+		eCooldown.text = eCooldownTimer.ToString ();
 		collide = false;
 	}
 
@@ -43,11 +46,23 @@ public class Player2Movement : MonoBehaviour {
 			eCooldownTimer= ECOOLDOWN;
 		}
 
-		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
+		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}	
 
 	void Update () {
-		qCooldownTimer-= Time.deltaTime;
-		eCooldownTimer-= Time.deltaTime;
+		if (qCooldownTimer <= 0) {
+			qCooldownTimer = 0;
+		} 
+		else {
+			qCooldownTimer -= Time.deltaTime;
+		}
+		if (eCooldownTimer <= 0) {
+			eCooldownTimer = 0;
+		} 
+		else {
+			eCooldownTimer -= Time.deltaTime;
+		}
+		qCooldown.text = (Mathf.CeilToInt(qCooldownTimer)).ToString ();
+		eCooldown.text = (Mathf.CeilToInt(eCooldownTimer)).ToString ();
 	}
 }

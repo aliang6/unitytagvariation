@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
-	private float ENTERCOOLDOWN = 10.0f;
-	private float SHIFTCOOLDOWN = 10.0f;
+	private float ENTERCOOLDOWN = 2.0f;
+	private float SHIFTCOOLDOWN = 2.0f;
 
 	public float speed;
 	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText;
+	public UnityEngine.UI.Text speedText, enterCooldown, shiftCooldown, tagNumber;
 
 	private bool collide;
 	private int tagCount;
@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
 		tagCount = 0;
-		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
+
+		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		enterCooldown.text = enterCooldownTimer.ToString ();
+		shiftCooldown.text = shiftCooldownTimer.ToString ();
 		collide = false;
 	}
 	
@@ -46,12 +49,24 @@ public class PlayerMovement : MonoBehaviour {
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
 
-		speedText.text = ((int)(rb2d.velocity.magnitude)).ToString();
+		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
 	void Update () {
-		enterCooldownTimer-= Time.deltaTime;
-		shiftCooldownTimer-= Time.deltaTime;
+		if (enterCooldownTimer <= 0) {
+			enterCooldownTimer = 0;
+		}
+		else {
+			enterCooldownTimer -= Time.deltaTime;
+		}
+		if (shiftCooldownTimer <= 0) {
+			shiftCooldownTimer = 0;
+		}
+		else {
+			shiftCooldownTimer -= Time.deltaTime;
+		}
+		enterCooldown.text = (Mathf.CeilToInt(enterCooldownTimer)).ToString ();
+		shiftCooldown.text = (Mathf.CeilToInt(shiftCooldownTimer)).ToString ();
 	}
 
 	/*void OnCollisionEnter (Rigidbody2D rdbd2) {
