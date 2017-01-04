@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 
+	public int speed;
+	private Rigidbody2D rb2d;
+
 	// Use this for initialization
-	void Start () {		
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-		
+	void Start () {
+		rb2d = GetComponent<Rigidbody2D>();
 	}
 
-	void OnCollisionEnter2D (Collision2D coll){
-		//here increment collided object's tagcounter
+	void Shoot(Vector3 vec) {
+		vec.Normalize();
+		rb2d.AddForce(speed*vec);
 	}
+
 }
