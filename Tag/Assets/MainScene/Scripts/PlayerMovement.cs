@@ -7,16 +7,19 @@ public class PlayerMovement : MonoBehaviour {
 
 	private float ENTERCOOLDOWN = 2.0f;
 	private float SHIFTCOOLDOWN = 2.0f;
+	private float SLASHCOOLDOWN = 10.0f;
 
 	public float speed;
 	public Rigidbody2D rb2d2;
 	public UnityEngine.UI.Text speedText, enterCooldown, shiftCooldown, tagNumber;
 
+	public Rigidbody2D projectile;
+
 	private bool collide;
 	private int tagCount;
 	private Rigidbody2D rb2d;
 
-	private float enterCooldownTimer, shiftCooldownTimer;
+	private float enterCooldownTimer, shiftCooldownTimer, slashCooldownTimer;
 
 
 	// Use this for initialization
@@ -48,11 +51,16 @@ public class PlayerMovement : MonoBehaviour {
 			rb2d.velocity *= -1;
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
+		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
+			Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
+			slashCooldownTimer= SLASHCOOLDOWN;
+		}
 
 		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
 	void Update () {
+		slashCooldownTimer-= Time.deltaTime;
 		if (enterCooldownTimer <= 0) {
 			enterCooldownTimer = 0;
 		}

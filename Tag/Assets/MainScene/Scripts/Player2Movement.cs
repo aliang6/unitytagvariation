@@ -7,7 +7,9 @@ public class Player2Movement : MonoBehaviour {
 
 	private float QCOOLDOWN = 2.0f;
 	private float ECOOLDOWN = 2.0f;
+	private float RCOOLDOWN = 2.0f;
 
+	public Rigidbody2D projectile;
 	public float speed;
 	public Rigidbody2D rb2d2;
 	public UnityEngine.UI.Text speedText, qCooldown, eCooldown, tagNumber;
@@ -15,7 +17,7 @@ public class Player2Movement : MonoBehaviour {
 	private bool collide;
 	private int tagCount;
 	private Rigidbody2D rb2d;
-	private float qCooldownTimer, eCooldownTimer;
+	private float qCooldownTimer, eCooldownTimer, rCooldownTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -45,7 +47,10 @@ public class Player2Movement : MonoBehaviour {
 			rb2d.velocity *= -1;
 			eCooldownTimer= ECOOLDOWN;
 		}
-
+		if (Input.GetKey (KeyCode.R) && rCooldownTimer <= 0) {
+			Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
+			rCooldownTimer= RCOOLDOWN;
+		}
 		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}	
 
