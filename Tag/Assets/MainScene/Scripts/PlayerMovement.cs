@@ -55,7 +55,9 @@ public class PlayerMovement : MonoBehaviour {
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
-			Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
+			//Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
+			Rigidbody2D proj = Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
+			proj.SendMessage("Shoot",rb2d.velocity);
 			slashCooldownTimer= SLASHCOOLDOWN;
 		}
 
