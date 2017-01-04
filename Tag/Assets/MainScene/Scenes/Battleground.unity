@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 858445211}
   m_Layer: 0
   m_Name: Player 2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -741,12 +741,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd237df9e64dd4ca04489218bd3e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 1000
   rb2d2: {fileID: 1518258759}
   speedText: {fileID: 681327177}
   enterCooldown: {fileID: 634171390}
   shiftCooldown: {fileID: 1211909661}
   tagNumber: {fileID: 546041807}
+  projectile: {fileID: 0}
 --- !u!212 &858445207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -636560695
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3923ac889cddd0040b3590080f0e58a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 862b118fb453f4afbb042ca1c08c3eec, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -790,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 858445205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.035, y: 0.035, z: 0.35}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -808,7 +809,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2799999
+  m_Radius: 14.5
 --- !u!50 &858445210
 Rigidbody2D:
   serializedVersion: 4
@@ -1077,7 +1078,7 @@ GameObject:
   - component: {fileID: 1518258758}
   m_Layer: 0
   m_Name: Player 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,7 +1096,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.2799999
+  m_Radius: 14.5
 --- !u!50 &1518258759
 Rigidbody2D:
   serializedVersion: 4
@@ -1127,7 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6693091a400a49e2941b025e35f3293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  projectile: {fileID: 0}
+  speed: 1000
   rb2d2: {fileID: 858445210}
   speedText: {fileID: 1177462627}
   qCooldown: {fileID: 934683305}
@@ -1164,7 +1166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -636560695
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3923ac889cddd0040b3590080f0e58a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 862b118fb453f4afbb042ca1c08c3eec, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1176,7 +1178,7 @@ Transform:
   m_GameObject: {fileID: 1518258757}
   m_LocalRotation: {x: 0, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: -4, y: 0, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
+  m_LocalScale: {x: 0.035, y: 0.035, z: 0.35}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
