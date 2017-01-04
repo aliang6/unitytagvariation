@@ -22,8 +22,8 @@ public class Player2Movement : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rb2d.AddForce (movement);
 
-		if (Input.GetKey (KeyCode.KeypadEnter)) {
-
+		if (Input.GetKey (KeyCode.Q)) {
+			rb2d.AddForce (movement * 2, ForceMode2D.Impulse);
 		}
 	}	
 }

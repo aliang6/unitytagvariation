@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour {
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rb2d.AddForce (movement);
 
-		
+		if (Input.GetKey (KeyCode.Return) ||
+			Input.GetKey (KeyCode.KeypadEnter)) {
+			rb2d.AddForce (movement * 2, ForceMode2D.Impulse);
+		}
 	
 	}
 
