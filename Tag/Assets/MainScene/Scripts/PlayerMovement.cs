@@ -97,7 +97,8 @@ public class PlayerMovement : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "Player" && immune == false) {
 			tagCount++;
-			rb2d.AddForce (other.relativeVelocity * 10);
+			other.rigidbody.velocity = new Vector2(0,0);
+			rb2d.AddForce (other.rigidbody.velocity, ForceMode2D.Impulse);
 		}
 		tagNumber.text = tagCount.ToString ();
 	} 
