@@ -14,8 +14,8 @@ public class Player : MonoBehaviour {
 	public bool immune;
 	public int tagCount;
 	public Rigidbody2D rb2d;
-	public float immuneCooldownTimer;//, qCooldownTimer, eCooldownTimer, rCooldownTimer;
-
+	public float immuneCooldownTimer;
+	
 	// Use this for initialization
 	public void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();

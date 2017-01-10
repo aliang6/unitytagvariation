@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour {
 	void Shoot(Vector3 vec) {
 		vec.Normalize();
 		rb2d.AddForce(speed*vec);
+		print(vec);
+		Debug.Log("HI");
 	}
-
 }

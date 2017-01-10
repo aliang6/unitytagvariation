@@ -38,7 +38,7 @@ public class PlayerMovement : Player {
 		enterCooldown.text = enterCooldownTimer.ToString ();
 		shiftCooldown.text = shiftCooldownTimer.ToString ();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -59,35 +59,41 @@ public class PlayerMovement : Player {
 			rb2d.velocity *= -1;
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
+	
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
-			//Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
-			Rigidbody2D proj = Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
-			proj.SendMessage("Shoot",rb2d.velocity);
+			GameObject projObj = Instantiate(Resources.Load("Projectile") as GameObject, rb2d.transform.position, rb2d.transform.rotation);
+			projObj.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
 			slashCooldownTimer= SLASHCOOLDOWN;
 		}
 		base.FixedUpdate();
 		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
+	
 	void Update () {
+		
+
 		if (enterCooldownTimer <= 0) {
 			enterCooldownTimer = 0;
 		}
 		else {
 			enterCooldownTimer -= Time.deltaTime;
 		}
+
 		if (shiftCooldownTimer <= 0) {
 			shiftCooldownTimer = 0;
 		}
 		else {
 			shiftCooldownTimer -= Time.deltaTime;
 		}
+
 		if (slashCooldownTimer <= 0) {
 			slashCooldownTimer = 0;
 		} 
 		else {
 			slashCooldownTimer -= Time.deltaTime;
 		}
+
 		if (immuneCooldownTimer <= 0) {
 			immune = false;
 			immuneCooldownTimer = 0;
