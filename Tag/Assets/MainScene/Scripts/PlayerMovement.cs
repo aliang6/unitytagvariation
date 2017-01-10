@@ -29,22 +29,38 @@ public class PlayerMovement : Player {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		float moveHorizontal = Input.GetAxis ("Horizontal");
+		/*float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-		rb2d.AddForce (movement * speed);
+		rb2d.AddForce (movement * speed);*/
+
+		float moveHorizontal = Input.GetAxis ("Horizontal");
+		float moveVertical = Input.GetAxis ("Vertical");
+		Vector2 movement = new Vector2 (0, moveVertical);
+
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			rb2d.AddForce (transform.up * speed);
+		}
+		if (Input.GetKey (KeyCode.RightArrow)) {
+			rb2d.rotation -= 90 * Time.deltaTime;
+		}
+
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+			rb2d.rotation += 90 * Time.deltaTime;
+		}
 
 		if ((Input.GetKey (KeyCode.Return) ||
 			Input.GetKey (KeyCode.KeypadEnter)) 
 			&& enterCooldownTimer <=0) {
 			immune = true;
-			rb2d.AddForce (movement * 5, ForceMode2D.Impulse);
+			rb2d.AddForce (transform.up * 5, ForceMode2D.Impulse);
 			immuneCooldownTimer = IMMUNEDURATION;
 			enterCooldownTimer= ENTERCOOLDOWN;
 		}
 		if (Input.GetKey (KeyCode.RightShift) && shiftCooldownTimer <= 0) {
 			Vector3 velocity = rb2d.velocity;
-			rb2d.velocity *= -1;
+			rb2d.velocity *= 0;
+			rb2d.AddForce (transform.up * -3, ForceMode2D.Impulse);
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
