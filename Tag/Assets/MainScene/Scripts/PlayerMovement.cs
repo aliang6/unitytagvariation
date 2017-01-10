@@ -66,9 +66,11 @@ public class PlayerMovement : Player {
 		}
 	
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
-			GameObject projObj = Instantiate(Resources.Load("Projectile") as GameObject, rb2d.transform.position, rb2d.transform.rotation);
-			projObj.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
-			slashCooldownTimer= SLASHCOOLDOWN;
+			Vector2 pos = rb2d.transform.position;
+			pos += (Vector2)(rb2d.transform.up);
+			GameObject projObj = Instantiate (Resources.Load ("Projectile") as GameObject, pos, rb2d.transform.rotation);
+			projObj.GetComponent<Rigidbody2D> ().velocity = rb2d.transform.up * 30;
+			slashCooldownTimer = SLASHCOOLDOWN;
 		}
 
 		base.FixedUpdate();

@@ -52,9 +52,16 @@ public class Player2Movement : Player {
 			rb2d.AddForce (transform.up * -3, ForceMode2D.Impulse);
 			eCooldownTimer= ECOOLDOWN;
 		}
-		if (Input.GetKey (KeyCode.R) && rCooldownTimer <= 0) {
+		/*if (Input.GetKey (KeyCode.R) && rCooldownTimer <= 0) {
 			Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
 			rCooldownTimer= RCOOLDOWN;
+		}*/
+		if (Input.GetKey (KeyCode.R) && rCooldownTimer <= 0) {
+			Vector3 pos = rb2d.transform.position;
+			pos += (Vector3)(rb2d.transform.up);
+			GameObject projObj = Instantiate (Resources.Load ("Projectile") as GameObject, pos, rb2d.transform.rotation);
+			projObj.GetComponent<Rigidbody2D> ().velocity = rb2d.transform.up * 30;
+			rCooldownTimer = RCOOLDOWN;
 		}
 		base.FixedUpdate();
 	}	

@@ -18,4 +18,8 @@ public class Projectile : MonoBehaviour {
 		print(vec);
 		Debug.Log("HI");
 	}
+
+	void OnCollisionEnter2D (Collision2D other) {
+
+	}
 }
