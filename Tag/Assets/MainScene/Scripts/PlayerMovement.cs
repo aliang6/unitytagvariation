@@ -42,11 +42,11 @@ public class PlayerMovement : Player {
 			rb2d.AddForce (transform.up * speed);
 		}
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			rb2d.rotation -= 90 * Time.deltaTime;
+			rb2d.rotation -= 180 * Time.deltaTime;
 		}
 
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			rb2d.rotation += 90 * Time.deltaTime;
+			rb2d.rotation += 180 * Time.deltaTime;
 		}
 
 		if ((Input.GetKey (KeyCode.Return) ||
