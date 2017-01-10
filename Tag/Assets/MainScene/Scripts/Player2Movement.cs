@@ -3,36 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player2Movement : MonoBehaviour {
+public class Player2Movement : Player {
 
 	private float QCOOLDOWN = 2.0f;
 	private float ECOOLDOWN = 2.0f;
 	private float RCOOLDOWN = 3.0f;
 	private float IMMUNEDURATION = 1.0f;
-
+/*
 	public Rigidbody2D projectile;
 	public float speed;
 	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText, qCooldown, eCooldown, tagNumber;
-
+	public UnityEngine.UI.Text speedText,*/
+	public UnityEngine.UI.Text qCooldown, eCooldown;//, tagNumber;
+/*
 	private bool immune;
 	private int tagCount;
 	private Rigidbody2D rb2d;
-	private float immuneCooldownTimer, qCooldownTimer, eCooldownTimer, rCooldownTimer;
+	private float immuneCooldownTimer, */
+	public float qCooldownTimer, eCooldownTimer, rCooldownTimer;
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
+		/*
 		rb2d = GetComponent<Rigidbody2D> ();
 		tagCount = 0;
 		immune = false;
 		tagNumber.text = tagCount.ToString ();
 		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		*/
+		base.Start();
 		qCooldown.text = qCooldownTimer.ToString ();
 		eCooldown.text = eCooldownTimer.ToString ();
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () {
+	new void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal2");
 		float moveVertical = Input.GetAxis ("Vertical2");
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
@@ -54,7 +59,8 @@ public class Player2Movement : MonoBehaviour {
 			Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
 			rCooldownTimer= RCOOLDOWN;
 		}
-		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		base.FixedUpdate();
+		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}	
 
 	void Update () {
@@ -85,6 +91,8 @@ public class Player2Movement : MonoBehaviour {
 		}
 		qCooldown.text = (Mathf.CeilToInt(qCooldownTimer)).ToString ();
 		eCooldown.text = (Mathf.CeilToInt(eCooldownTimer)).ToString ();
+
+		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {

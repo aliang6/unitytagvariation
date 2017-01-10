@@ -3,33 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : Player {
 
 	private float ENTERCOOLDOWN = 2.0f;
 	private float SHIFTCOOLDOWN = 2.0f;
 	private float SLASHCOOLDOWN = 3.0f;
 	private float IMMUNEDURATION = 1.0f;
-
+	/*
 	public float speed;
 	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText, enterCooldown, shiftCooldown, tagNumber;
-
+	public UnityEngine.UI.Text speedText,*/
+	public UnityEngine.UI.Text enterCooldown, shiftCooldown;//, tagNumber;
+/*
 	public Rigidbody2D projectile;
 
 	private bool immune;
 	private int tagCount;
 	private Rigidbody2D rb2d;
-
-	private float immuneCooldownTimer, enterCooldownTimer, shiftCooldownTimer, slashCooldownTimer;
+*/
+	//private float immuneCooldownTimer, 
+	private float enterCooldownTimer, shiftCooldownTimer, slashCooldownTimer;
 
 
 	// Use this for initialization
 	void Start () {
+		/*
 		rb2d = GetComponent<Rigidbody2D> ();
 		tagCount = 0;
 		immune = false;
 		tagNumber.text = tagCount.ToString ();
 		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		*/
+		base.Start();
 		enterCooldown.text = enterCooldownTimer.ToString ();
 		shiftCooldown.text = shiftCooldownTimer.ToString ();
 	}
@@ -60,8 +65,8 @@ public class PlayerMovement : MonoBehaviour {
 			proj.SendMessage("Shoot",rb2d.velocity);
 			slashCooldownTimer= SLASHCOOLDOWN;
 		}
-
-		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+		base.FixedUpdate();
+		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
 	void Update () {
