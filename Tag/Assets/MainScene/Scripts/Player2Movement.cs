@@ -9,28 +9,14 @@ public class Player2Movement : Player {
 	private float ECOOLDOWN = 2.0f;
 	private float RCOOLDOWN = 3.0f;
 	private float IMMUNEDURATION = 1.0f;
-/*
-	public Rigidbody2D projectile;
-	public float speed;
-	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText,*/
-	public UnityEngine.UI.Text qCooldown, eCooldown;//, tagNumber;
-/*
-	private bool immune;
-	private int tagCount;
-	private Rigidbody2D rb2d;
-	private float immuneCooldownTimer, */
+
+	public UnityEngine.UI.Text qCooldown, eCooldown;
+
 	public float qCooldownTimer, eCooldownTimer, rCooldownTimer;
 
 	// Use this for initialization
 	new void Start () {
-		/*
-		rb2d = GetComponent<Rigidbody2D> ();
-		tagCount = 0;
-		immune = false;
-		tagNumber.text = tagCount.ToString ();
-		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
-		*/
+
 		base.Start();
 		qCooldown.text = qCooldownTimer.ToString ();
 		eCooldown.text = eCooldownTimer.ToString ();
@@ -60,7 +46,6 @@ public class Player2Movement : Player {
 			rCooldownTimer= RCOOLDOWN;
 		}
 		base.FixedUpdate();
-		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}	
 
 	void Update () {
@@ -92,7 +77,6 @@ public class Player2Movement : Player {
 		qCooldown.text = (Mathf.CeilToInt(qCooldownTimer)).ToString ();
 		eCooldown.text = (Mathf.CeilToInt(eCooldownTimer)).ToString ();
 
-		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {

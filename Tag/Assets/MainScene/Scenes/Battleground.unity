@@ -741,13 +741,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdd237df9e64dd4ca04489218bd3e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
+  speed: 10
   rb2d2: {fileID: 1518258759}
   speedText: {fileID: 681327177}
   enterCooldown: {fileID: 634171390}
   shiftCooldown: {fileID: 1211909661}
   tagNumber: {fileID: 546041807}
-  projectile: {fileID: 0}
+  projectile: {fileID: 50000013902283980, guid: be78052d449c74f37bac1088aee0b560,
+    type: 2}
 --- !u!212 &858445207
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1128,8 +1129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6693091a400a49e2941b025e35f3293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 0}
-  speed: 1000
+  projectile: {fileID: 50000013902283980, guid: be78052d449c74f37bac1088aee0b560,
+    type: 2}
+  speed: 10
   rb2d2: {fileID: 858445210}
   speedText: {fileID: 1177462627}
   qCooldown: {fileID: 934683305}
