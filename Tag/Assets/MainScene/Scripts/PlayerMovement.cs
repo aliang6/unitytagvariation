@@ -9,34 +9,22 @@ public class PlayerMovement : Player {
 	private float SHIFTCOOLDOWN = 2.0f;
 	private float SLASHCOOLDOWN = 3.0f;
 	private float IMMUNEDURATION = 1.0f;
-	/*
-	public float speed;
-	public Rigidbody2D rb2d2;
-	public UnityEngine.UI.Text speedText,*/
-	public UnityEngine.UI.Text enterCooldown, shiftCooldown;//, tagNumber;
-/*
-	public Rigidbody2D projectile;
 
-	private bool immune;
-	private int tagCount;
-	private Rigidbody2D rb2d;
-*/
-	//private float immuneCooldownTimer, 
+	public UnityEngine.UI.Text enterCooldown, shiftCooldown, rotation;
+
 	private float enterCooldownTimer, shiftCooldownTimer, slashCooldownTimer;
+
+	private float direction; 
 
 
 	// Use this for initialization
 	void Start () {
-		/*
-		rb2d = GetComponent<Rigidbody2D> ();
-		tagCount = 0;
-		immune = false;
-		tagNumber.text = tagCount.ToString ();
-		speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
-		*/
+
 		base.Start();
+
 		enterCooldown.text = enterCooldownTimer.ToString ();
 		shiftCooldown.text = shiftCooldownTimer.ToString ();
+		rotation.text = rb2d.rotation.ToString ();
 	}
 
 	// Update is called once per frame
@@ -65,8 +53,9 @@ public class PlayerMovement : Player {
 			projObj.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
 			slashCooldownTimer= SLASHCOOLDOWN;
 		}
+
 		base.FixedUpdate();
-		//speedText.text = (Mathf.CeilToInt(rb2d.velocity.magnitude)).ToString();
+
 	}
 
 	
@@ -101,6 +90,7 @@ public class PlayerMovement : Player {
 		else {
 			immuneCooldownTimer -= Time.deltaTime;
 		}
+		rotation.text = rb2d.rotation.ToString ();
 		enterCooldown.text = (Mathf.CeilToInt(enterCooldownTimer)).ToString ();
 		shiftCooldown.text = (Mathf.CeilToInt(shiftCooldownTimer)).ToString ();
 	}
@@ -113,4 +103,8 @@ public class PlayerMovement : Player {
 		}
 		tagNumber.text = tagCount.ToString ();
 	} 
+
+	//Direction functions===============================================
+
+	//==================================================================
 }
