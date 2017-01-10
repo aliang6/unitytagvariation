@@ -12,7 +12,7 @@ public class Player2Movement : Player {
 
 	public UnityEngine.UI.Text qCooldown, eCooldown;
 
-	public float qCooldownTimer, eCooldownTimer, rCooldownTimer;
+	private float qCooldownTimer, eCooldownTimer, rCooldownTimer;
 
 	// Use this for initialization
 	new void Start () {
@@ -27,18 +27,29 @@ public class Player2Movement : Player {
 		float moveHorizontal = Input.GetAxis ("Horizontal2");
 		float moveVertical = Input.GetAxis ("Vertical2");
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-		rb2d.AddForce (movement * speed);
+
+		if (Input.GetKey (KeyCode.W)) {
+			rb2d.AddForce (transform.up * speed);
+		}
+		if (Input.GetKey (KeyCode.D)) {
+			rb2d.rotation -= 180 * Time.deltaTime;
+		}
+
+		if (Input.GetKey (KeyCode.A)) {
+			rb2d.rotation += 180 * Time.deltaTime;
+		}
 
 		if (Input.GetKey (KeyCode.Q) && qCooldownTimer <= 0) {
 			immune = true;
-			rb2d.AddForce (movement * 5, ForceMode2D.Impulse);
+			rb2d.AddForce (transform.up * 5, ForceMode2D.Impulse);
 			immuneCooldownTimer = IMMUNEDURATION;
 			qCooldownTimer= QCOOLDOWN;
 		}
 
 		if (Input.GetKey (KeyCode.E) && eCooldownTimer <= 0) {
 			Vector3 velocity = rb2d.velocity;
-			rb2d.velocity *= -1;
+			rb2d.velocity *= 0;
+			rb2d.AddForce (transform.up * -3, ForceMode2D.Impulse);
 			eCooldownTimer= ECOOLDOWN;
 		}
 		if (Input.GetKey (KeyCode.R) && rCooldownTimer <= 0) {
@@ -76,6 +87,7 @@ public class Player2Movement : Player {
 		}
 		qCooldown.text = (Mathf.CeilToInt(qCooldownTimer)).ToString ();
 		eCooldown.text = (Mathf.CeilToInt(eCooldownTimer)).ToString ();
+
 
 	}
 

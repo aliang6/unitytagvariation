@@ -48,20 +48,21 @@ public class PlayerMovement : Player {
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 			rb2d.rotation += 180 * Time.deltaTime;
 		}
-
-		if ((Input.GetKey (KeyCode.Return) ||
-			Input.GetKey (KeyCode.KeypadEnter)) 
-			&& enterCooldownTimer <=0) {
+			
+		if (Input.GetKey (KeyCode.RightShift) && shiftCooldownTimer <= 0){
 			immune = true;
 			rb2d.AddForce (transform.up * 5, ForceMode2D.Impulse);
 			immuneCooldownTimer = IMMUNEDURATION;
-			enterCooldownTimer= ENTERCOOLDOWN;
+			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
-		if (Input.GetKey (KeyCode.RightShift) && shiftCooldownTimer <= 0) {
+		if ((Input.GetKey (KeyCode.Return) ||
+			Input.GetKey (KeyCode.KeypadEnter)) 
+			&& enterCooldownTimer <=0)  {
 			Vector3 velocity = rb2d.velocity;
 			rb2d.velocity *= 0;
 			rb2d.AddForce (transform.up * -3, ForceMode2D.Impulse);
-			shiftCooldownTimer= SHIFTCOOLDOWN;
+			enterCooldownTimer= ENTERCOOLDOWN;
+
 		}
 	
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){

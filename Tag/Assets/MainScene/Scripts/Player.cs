@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	public Rigidbody2D projectile;
-	protected float speed;
+	public float speed;
 	
 	public UnityEngine.UI.Text speedText, tagNumber;
 
