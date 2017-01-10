@@ -26,7 +26,7 @@ public class PlayerMovement : Player {
 		shiftCooldown.text = shiftCooldownTimer.ToString ();
 		rotation.text = rb2d.rotation.ToString ();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 		/*float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -63,9 +63,10 @@ public class PlayerMovement : Player {
 			rb2d.AddForce (transform.up * -3, ForceMode2D.Impulse);
 			shiftCooldownTimer= SHIFTCOOLDOWN;
 		}
+	
 		if (Input.GetKey(KeyCode.Slash) && slashCooldownTimer <=0){
-			Rigidbody2D proj = Instantiate (projectile, rb2d.transform.position, rb2d.transform.rotation);
-			proj.SendMessage("Shoot",rb2d.velocity);
+			GameObject projObj = Instantiate(Resources.Load("Projectile") as GameObject, rb2d.transform.position, rb2d.transform.rotation);
+			projObj.GetComponent<Rigidbody2D>().velocity = rb2d.velocity;
 			slashCooldownTimer= SLASHCOOLDOWN;
 		}
 
@@ -73,25 +74,31 @@ public class PlayerMovement : Player {
 
 	}
 
+	
 	void Update () {
+		
+
 		if (enterCooldownTimer <= 0) {
 			enterCooldownTimer = 0;
 		}
 		else {
 			enterCooldownTimer -= Time.deltaTime;
 		}
+
 		if (shiftCooldownTimer <= 0) {
 			shiftCooldownTimer = 0;
 		}
 		else {
 			shiftCooldownTimer -= Time.deltaTime;
 		}
+
 		if (slashCooldownTimer <= 0) {
 			slashCooldownTimer = 0;
 		} 
 		else {
 			slashCooldownTimer -= Time.deltaTime;
 		}
+
 		if (immuneCooldownTimer <= 0) {
 			immune = false;
 			immuneCooldownTimer = 0;
