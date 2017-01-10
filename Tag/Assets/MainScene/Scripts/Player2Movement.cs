@@ -61,7 +61,7 @@ public class Player2Movement : Player {
 			pos += (Vector3)(rb2d.transform.up);
 			GameObject projObj = Instantiate (Resources.Load ("Projectile") as GameObject, pos, rb2d.transform.rotation);
 			projObj.GetComponent<Rigidbody2D> ().velocity = rb2d.transform.up * 30;
-			rCooldownTimer = RCOOLDOWN;
+			//rCooldownTimer = RCOOLDOWN;
 		}
 		base.FixedUpdate();
 	}	
